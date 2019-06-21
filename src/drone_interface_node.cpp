@@ -18,7 +18,7 @@ bool DroneInterfaceNode::initialize(){
   // load a drone interface
   pluginlib::ClassLoader<DroneInterface> drone_interface_loader("core_drone_interface", "DroneInterface");
   try{
-    drone_interface = drone_interface_loader.createInstance("GazeboInterface");
+    drone_interface = drone_interface_loader.createInstance(drone_interface_name);
   }
   catch(pluginlib::PluginlibException& ex){
     ROS_ERROR("The DroneInterface plugin failed to load. Error: %s", ex.what());

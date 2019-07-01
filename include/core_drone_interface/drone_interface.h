@@ -18,6 +18,8 @@ public:
   virtual bool request_control() = 0;
   virtual bool arm() = 0;
   virtual bool disarm() = 0;
+  virtual bool is_armed() = 0;
+  virtual bool has_control() = 0;
   
   // command functions
   virtual void command_attitude_thrust(mav_msgs::AttitudeThrust){

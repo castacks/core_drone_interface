@@ -34,11 +34,22 @@ bool DroneInterfaceNode::initialize(){
   torque_thrust_sub = nh->subscribe("torque_thrust_command", 10, &DroneInterfaceNode::torque_thrust_callback, this);
   velocity_sub = nh->subscribe("velocity_command", 10, &DroneInterfaceNode::velocity_callback, this);
   pose_sub = nh->subscribe("pose_command", 10, &DroneInterfaceNode::pose_callback, this);
+
+  // init publishers
+  is_armed_pub = nh->advertise<std_msgs::Bool>("is_armed", 1);
+  has_control_pub = nh->advertise<std_msgs::Bool>("has_control", 1);
   
   return true;
 }
 
 bool DroneInterfaceNode::execute(){
+  std_msgs::Bool is_armed;
+  is_armed.data = drone_interface->is_armed();
+  is_armed_pub.publish(is_armed);
+  
+  std_msgs::Bool has_control;
+  has_control.data = drone_interface->has_control();
+  has_control_pub.publish(has_control);
   
   return true;
 }

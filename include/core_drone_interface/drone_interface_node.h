@@ -5,6 +5,7 @@
 #include <string>
 #include <core_drone_interface/drone_interface.h>
 #include <core_drone_interface/DroneCommand.h>
+#include <std_msgs/Bool.h>
 
 class DroneInterfaceNode : public BaseNode {
 private:
@@ -20,6 +21,9 @@ private:
   // subscribers
   ros::Subscriber attitude_thrust_sub, rate_thrust_sub, roll_pitch_yawrate_thrust_sub,
     torque_thrust_sub, velocity_sub, pose_sub;
+
+  // publishers
+  ros::Publisher is_armed_pub, has_control_pub;
 
   // callbacks
   void attitude_thrust_callback(mav_msgs::AttitudeThrust msg);

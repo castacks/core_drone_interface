@@ -7,6 +7,7 @@ find_package(catkin REQUIRED COMPONENTS
   sensor_msgs
   pluginlib
   message_generation
+  mav_msgs
 )
 
 find_package(base)

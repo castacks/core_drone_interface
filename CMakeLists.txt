@@ -27,7 +27,7 @@ catkin_package()
 
 catkin_package(
   INCLUDE_DIRS include
-  CATKIN_DEPENDS rospy roscpp std_msgs
+  CATKIN_DEPENDS rospy roscpp std_msgs mav_msgs
 )
 
 

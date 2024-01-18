@@ -30,6 +30,10 @@ public:
     ROS_ERROR("command_rate_thrust WAS CALLED, BUT IS NOT IMPLEMENTED.");
   }
   
+  virtual void command_torque_feedforward(mav_msgs::RateThrust){
+    ROS_ERROR("command_torque_feedforward WAS CALLED, BUT IS NOT IMPLEMENTED.");
+  }
+
   virtual void command_roll_pitch_yawrate_thrust(mav_msgs::RollPitchYawrateThrust){
     ROS_ERROR("command_roll_pitch_yawrate_thrust WAS CALLED, BUT IS NOT IMPLEMENTED.");
   }

@@ -22,12 +22,16 @@ private:
   ros::Subscriber attitude_thrust_sub, rate_thrust_sub, roll_pitch_yawrate_thrust_sub,
     torque_thrust_sub, velocity_sub, pose_sub;
 
+  ros::Subscriber torque_feedforward_sub;
+
   // publishers
   ros::Publisher is_armed_pub, has_control_pub;
 
   // callbacks
   void attitude_thrust_callback(mav_msgs::AttitudeThrust msg);
   void rate_thrust_callback(mav_msgs::RateThrust msg);
+  void torque_feedforward_callback(mav_msgs::RateThrust msg);
+
   void roll_pitch_yawrate_thrust_callback(mav_msgs::RollPitchYawrateThrust msg);
   void torque_thrust_callback(mav_msgs::TorqueThrust msg);
   void velocity_callback(geometry_msgs::TwistStamped msg);

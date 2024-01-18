@@ -30,6 +30,8 @@ bool DroneInterfaceNode::initialize(){
   // init subscribers
   attitude_thrust_sub = nh->subscribe("attitude_thrust_command", 10, &DroneInterfaceNode::attitude_thrust_callback, this);
   rate_thrust_sub = nh->subscribe("rate_thrust_command", 10, &DroneInterfaceNode::rate_thrust_callback, this);
+
+  torque_feedforward_sub = nh->subscribe("torque_feedforward_command", 10, &DroneInterfaceNode::torque_feedforward_callback, this);
   roll_pitch_yawrate_thrust_sub = nh->subscribe("roll_pitch_yawrate_thrust_command", 10, &DroneInterfaceNode::roll_pitch_yawrate_thrust_callback, this);
   torque_thrust_sub = nh->subscribe("torque_thrust_command", 10, &DroneInterfaceNode::torque_thrust_callback, this);
   velocity_sub = nh->subscribe("velocity_command", 10, &DroneInterfaceNode::velocity_callback, this);
@@ -78,6 +80,11 @@ void DroneInterfaceNode::attitude_thrust_callback(mav_msgs::AttitudeThrust msg){
 void DroneInterfaceNode::rate_thrust_callback(mav_msgs::RateThrust msg){
   drone_interface->command_rate_thrust(msg);
 }
+
+void DroneInterfaceNode::torque_feedforward_callback(mav_msgs::RateThrust msg){
+  drone_interface->command_torque_feedforward(msg);
+}
+
 
 void DroneInterfaceNode::roll_pitch_yawrate_thrust_callback(mav_msgs::RollPitchYawrateThrust msg){
   drone_interface->command_roll_pitch_yawrate_thrust(msg);

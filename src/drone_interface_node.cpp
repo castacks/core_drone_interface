@@ -31,7 +31,7 @@ bool DroneInterfaceNode::initialize(){
   attitude_thrust_sub = nh->subscribe("attitude_thrust_command", 10, &DroneInterfaceNode::attitude_thrust_callback, this);
   rate_thrust_sub = nh->subscribe("rate_thrust_command", 10, &DroneInterfaceNode::rate_thrust_callback, this);
 
-  torque_feedforward_sub = nh->subscribe("torque_feedforward_command", 10, &DroneInterfaceNode::torque_feedforward_callback, this);
+  torque_feedforward_sub = nh->subscribe("/wrench_controller/torque_ff", 10, &DroneInterfaceNode::torque_feedforward_callback, this);
   roll_pitch_yawrate_thrust_sub = nh->subscribe("roll_pitch_yawrate_thrust_command", 10, &DroneInterfaceNode::roll_pitch_yawrate_thrust_callback, this);
   torque_thrust_sub = nh->subscribe("torque_thrust_command", 10, &DroneInterfaceNode::torque_thrust_callback, this);
   velocity_sub = nh->subscribe("velocity_command", 10, &DroneInterfaceNode::velocity_callback, this);
